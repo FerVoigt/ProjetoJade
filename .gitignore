@@ -1,0 +1,7 @@
+# Local character backups and development artifacts
+Vale-de-Jade-personagens*.json
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+work/

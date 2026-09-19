@@ -1,0 +1,39 @@
+VALE DE JADE — O DESPERTAR | TESTE 0.3
+
+Abra index.html no Chrome ou Edge. Extraia o ZIP antes de jogar.
+
+TRÊS PERSONAGENS
+Na abertura, escolha um personagem existente ou uma vaga vazia para criar.
+Cada vaga guarda nome, classe, nível, experiência, vida, energia, posição,
+câmera e progresso da missão. O jogo salva automaticamente.
+O perfil da versão anterior será aproveitado na primeira vaga.
+
+SALVAR E TROCAR
+H / Esc abre o menu: Salvar agora ou Salvar e trocar personagem.
+Na seleção inicial, Baixar backup exporta suas três vagas em JSON.
+Restaurar backup pede confirmação antes de substituir as vagas atuais.
+Excluir personagem exige confirmação e libera apenas aquela vaga.
+
+Os dados ficam neste navegador, sem nuvem. Para mudar de navegador,
+endereço ou computador, baixe e restaure um backup.
+
+CONTROLES
+WASD / setas: mover. Clique no chão: caminhar.
+Clique em inimigo: selecionar, aproximar e atacar.
+TAB: trocar alvo. A seleção continua visível enquanto você anda.
+1 / Espaço: ataque. 2: habilidade em área. 3: cura / proteção.
+V: alternar câmera. Roda: zoom. Botão direito + arrastar: girar.
+H / Esc: pausa. Botão Som: efeitos sonoros opcionais.
+
+CLASSES
+Espadachim: espada, combo, dança das lâminas e cura.
+Arcanista: projéteis astrais, nova em área e cura lunar.
+Guardião solar: lança, impacto de fogo e escudo temporário.
+
+Purifique cinco espíritos e enfrente o chefe. A missão concluída fica salva.
+Experiência: 35 por espírito e 100 pelo chefe. O excedente é preservado.
+
+Ainda é um protótipo solo. Sem multiplayer, inventário ou novas missões.
+Cliques não calculam rotas: use WASD para contornar obstáculos.
+
+Mais informações em README.md. Three.js e licença MIT em vendor/.
