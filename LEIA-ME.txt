@@ -1,9 +1,17 @@
-VALE DE JADE — ALÉM DAS NUVENS | TESTE 0.5
+VALE DE JADE — ALÉM DAS NUVENS | TESTE 0.6
 
 Extraia o ZIP inteiro e abra index.html no Chrome ou Edge.
 Não é necessário instalar nada ou conectar à internet.
 
-NOVIDADES
+NOVIDADES 0.6
+Converse com Aya no santuário para iniciar a campanha Além das nuvens.
+Cinco missões novas, sete NPCs novos e doze baús para encontrar.
+Tao vende elixires e compra equipamentos. Bo reforça sua arma com essências.
+Q: esquiva. R: elixir rápido. Segure 1 / Espaço para atacar continuamente.
+M permite viajar entre acampamentos descobertos, fora de combate.
+Hana organiza uma prova de três ondas após a missão dos faróis.
+
+OUTROS RECURSOS
 I: inventário com abas, busca, raridades, equipamentos e consumíveis.
 M: mapa de 15 regiões; siga ao norte pelas pontes para explorar.
 108 novos inimigos, com dificuldade e itens melhores nas áreas distantes.
@@ -15,7 +23,7 @@ Selecione um item para equipar, comparar, usar ou descartar.
 Armas respeitam classe e nível. Armaduras reduzem o dano recebido.
 Itens são recebidos ao derrotar inimigos. A mochila tem 60 espaços.
 O mundo pausa durante a organização. Descarte exige confirmação.
-Moedas e materiais são guardados; lojas e fabricação virão em outra versão.
+Use moedas com Tao. Leve essências a Bo para melhorar a arma equipada.
 
 INVOCADOR
 1: Dardo sombrio.

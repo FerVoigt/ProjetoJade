@@ -1,7 +1,7 @@
 # Vale de Jade — Além das nuvens
 
 Protótipo 3D solo de fantasia oriental, desenvolvido em JavaScript e Three.js.
-**Versão 0.5:** inventário funcional, mundo procedural e a classe Invocador.
+**Versão 0.6:** campanha na fronteira, mercador, forja, baús e combate mais fluido.
 
 ## Jogar
 
@@ -25,7 +25,7 @@ Pressione **I** ou clique em Inventário. O mundo fica pausado durante a organiz
 - Descartar exige confirmação. Um item equipado precisa ser desequipado primeiro.
 
 Personagens antigos recebem equipamento básico e elixires uma única vez, sem perder o progresso.
-Moedas e materiais já podem ser acumulados; lojas e fabricação ainda não estão implementadas.
+Tao vende elixires e compra equipamentos que não estão equipados. Bo usa moedas e essências para reforçar sua arma equipada, respeitando seu nível.
 
 ![Inventário com filtros e equipamentos](inventario.png)
 
@@ -75,11 +75,45 @@ limite de três aliados. O estado das invocações também fica salvo.
 
 ![Invocador e seus aliados](invocacoes.png)
 
-## Missões e habitantes
+## Novidades de jogabilidade
+
+- **Q: esquiva**, com deslocamento curto, 0,38 segundo de invulnerabilidade e 3 segundos de recarga. Respeita os limites e obstáculos do mapa.
+- **R: elixir rápido**, usando uma unidade da mochila, com 6 segundos de recarga. Vida cheia não gasta elixir.
+- **Segure 1 ou Espaço** para atacar continuamente um inimigo ao alcance.
+- Fora de combate e longe dos inimigos, recupere 3 PV por segundo após 6 segundos sem combate.
+- **M: viagem entre acampamentos descobertos**, disponível fora de combate e de provas.
+- O objetivo acompanhado mostra direção ou distância. Escolha outra missão para acompanhar no diário J.
+- **12 baús**, um por região procedural, oferecem moedas, essências e suprimentos. Alguns também contêm equipamentos raros. Cada baú abre uma vez por personagem.
+
+## Campanha Além das nuvens
+
+Sete novos habitantes se juntam aos três anteriores. A campanha acrescenta cinco missões conectadas, totalizando nove missões.
+
+| Habitante | Local / atividade |
+| --- | --- |
+| Aya, cartógrafa | No santuário, perto do início. Pede a descoberta do primeiro acampamento e recompensa com arma rara. |
+| Ren, batedor | Acampamento central da primeira faixa. Missão de combate na fronteira. |
+| Noor, guardiã | Acampamento central da segunda faixa. Pede a ativação de três faróis, um em cada ilha dessa faixa. |
+| Hana, mestra | Acampamento central da terceira faixa. Organiza a prova dos cinco ecos. |
+| Sora, vigia | Acampamento central da última faixa. Pede a derrota de um dos três colossos da fronteira; recompensa com arma épica. |
+| Tao, mercador | Santuário. Compra equipamento não equipado e vende elixires por 25 moedas. |
+| Bo, mestre da forja | Santuário. Reforça a arma equipada usando moedas e essências, com custo e melhoria mostrados antes da ação. |
+
+Aceite e entregue cada missão ao respectivo NPC com E. As missões seguintes são liberadas pela entrega da anterior. Vitórias anteriores na fronteira também contam. Recompensas de missão só são concedidas uma vez; baús, faróis e contadores são salvos. A entrega de equipamento exige espaço na mochila.
+
+### Prova dos cinco ecos
+
+Hana libera a prova após a missão dos faróis. Há três ondas: duas feras, dois espíritos e um guardião. Durante a prova, os inimigos comuns da ilha ficam suspensos para manter o desafio concentrado na arena. Você pode pausar normalmente. Sair da arena, morrer ou recarregar reinicia a tentativa; os itens e a missão são preservados. A vitória fica salva. A primeira vitória concede um bônus, e a prova pode ser repetida para obter o loot normal dos inimigos.
+
+![Campanha com novos habitantes](nova-campanha.png)
+![Forja de equipamentos](forja-e-servicos.png)
+![Prova dos ecos](prova-dos-ecos.png)
+
+## Missões e habitantes originais
 
 Mestre Yun aguarda no santuário; Lin está junto à ponte da floresta; Mei, na entrada
 das ruínas. Aproxime-se e pressione **E** para conversar, aceitar ou entregar missões.
-As quatro missões da versão anterior continuam disponíveis, com recompensas únicas.
+As quatro missões originais continuam disponíveis, com recompensas únicas.
 A missão de Mei permite coletar três memórias de cristal e libera o desafio do Colosso.
 Feitos anteriores contam para as missões de combate. **J** abre o diário e permite
 retornar ao santuário.
@@ -94,6 +128,7 @@ retornar ao santuário.
 | Clique em inimigo | Selecionar, aproximar e atacar |
 | TAB | Alternar alvo próximo |
 | 1 / Espaço, 2, 3 | Habilidades da classe |
+| Q / R | Esquiva / elixir rápido |
 | I | Inventário |
 | M | Mapa completo |
 | E | Conversar / coletar memória próxima |
@@ -113,7 +148,7 @@ automaticamente a cada três segundos e nas mudanças importantes.
 
 O menu de pausa oferece Salvar agora e Salvar e trocar personagem. Baixar backup
 exporta as três vagas; Restaurar backup valida o arquivo e pede confirmação antes de
-substituí-las. A migração preserva os personagens das versões 0.2, 0.3 e 0.4.
+substituí-las. A migração preserva os personagens das versões 0.2 a 0.5.
 
 O armazenamento é local ao navegador, sem conta online ou sincronização em nuvem.
 Trocar de navegador, endereço ou computador, limpar os dados ou usar modo privado
@@ -121,7 +156,7 @@ pode afetar os saves. Use backup para transportar sua jornada.
 
 ## Verificação
 
-Testes de regras: `node systems.test.cjs` (Node.js, sem dependências).
+Testes de regras: `node systems.test.cjs` e `node campaign.test.cjs` (Node.js, sem dependências).
 Verificam geração reproduzível, biomas, posições válidas, rotas, dificuldade,
 validação de itens, restrições de equipamentos e compatibilidade dos saves.
 
@@ -131,14 +166,17 @@ Invocador e combate dos aliados, pausa e retomada das invocações, mapa, traves
 até a última faixa, reaparecimento de inimigos e posições distantes após recarregar.
 Interface conferida em 1440 × 900 e 1280 × 720.
 
+A versão 0.6 também foi verificada com aceites e entregas da campanha, três faróis, recompensa final, baú sem duplicação, compras/vendas, reforço de arma, esquiva na borda, ataque contínuo, contagem de vitórias e combate real nas três ondas da arena.
+
 ## Estrutura e limites
 
 - `index.html` / `style.css`: interface e apresentação.
 - `game.js`: cena, combate, interface, missões e companheiros.
 - `systems.js`: catálogo de itens e geração determinística do mundo.
 - `storage.js`: validação, três personagens e cópia de recuperação.
+- `campaign.js` / `campaign.test.cjs`: campanha, validação e regras da forja.
 - `systems.test.cjs`: testes das regras e da compatibilidade.
 - `vendor/`: Three.js 0.160.0 e licença MIT para funcionamento offline.
 
-Ainda é um protótipo solo, sem multiplayer, lojas ou fabricação. Arte procedural
+Ainda é um protótipo solo, sem multiplayer ou fabricação de itens do zero. Arte procedural
 original; nenhum arquivo, personagem ou código de Zu Online foi utilizado.

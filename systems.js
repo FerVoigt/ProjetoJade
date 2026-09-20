@@ -5,7 +5,7 @@ const RARITIES={common:{name:'Comum',color:'#bdc8bf',factor:1},uncommon:{name:'I
 const ITEMS={
  sword:{name:'Espada',icon:'⚔',category:'weapon',slot:'weapon',classId:'sword'},staff:{name:'Cajado',icon:'✧',category:'weapon',slot:'weapon',classId:'mage'},spear:{name:'Lança',icon:'♜',category:'weapon',slot:'weapon',classId:'guardian'},grimoire:{name:'Grimório',icon:'☾',category:'weapon',slot:'weapon',classId:'summoner'},
  robe:{name:'Vestes',icon:'♜',category:'armor',slot:'armor'},amulet:{name:'Amuleto',icon:'◈',category:'accessory',slot:'accessory'},
- health:{name:'Elixir de vida',icon:'♥',category:'consumable',description:'Restaura 60 de vida. Não é consumido com vida cheia.'},mana:{name:'Elixir espiritual',icon:'✦',category:'consumable',description:'Restaura 65 de energia. Não é consumido com energia cheia.'},shard:{name:'Essência das trevas',icon:'⬡',category:'material',description:'Material obtido de criaturas. Pode ser guardado para futuras receitas.'}
+ health:{name:'Elixir de vida',icon:'♥',category:'consumable',description:'Restaura 60 de vida. Não é consumido com vida cheia.'},mana:{name:'Elixir espiritual',icon:'✦',category:'consumable',description:'Restaura 65 de energia. Não é consumido com energia cheia.'},shard:{name:'Essência das trevas',icon:'⬡',category:'material',description:'Material obtido de criaturas e baús. Bo usa essências para reforçar sua arma.'}
 };
 const WEAPONS={sword:'sword',mage:'staff',guardian:'spear',summoner:'grimoire'};
 const clamp=(v,a,b,d)=>typeof v==='number'&&Number.isFinite(v)?Math.min(b,Math.max(a,v)):d;
