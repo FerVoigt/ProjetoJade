@@ -1,7 +1,7 @@
 # Vale de Jade — O despertar
 
 Protótipo 3D solo de fantasia oriental, desenvolvido em JavaScript e Three.js.
-Versão **0.3**: três personagens, salvamento individual e combate com seleção de alvo.
+Versão **0.4**: três regiões conectadas, NPCs, quatro missões e combate expandido.
 
 ## Jogar
 
@@ -34,6 +34,9 @@ privado pode afetar os saves. Use os arquivos de backup para transportar o progr
 | Clique no chão | Caminhar até o ponto |
 | Clique em inimigo | Selecionar, aproximar e atacar |
 | TAB | Alternar alvo próximo |
+| Shift + movimento | Correr |
+| E | Conversar com NPC / coletar memória próxima |
+| J | Diário de missões e retorno ao santuário |
 | 1 / Espaço | Ataque básico |
 | 2 | Habilidade ofensiva em área |
 | 3 | Cura ou proteção |
@@ -57,10 +60,27 @@ Purifique cinco espíritos e enfrente o Guardião da névoa. Cada espírito conc
 
 ![Efeito de habilidade e vida do alvo](skills-e-alvo.png)
 
+## Expansão 0.4
+
+- **Santuário da Aurora:** a jornada original e o mentor Mestre Yun.
+- **Floresta dos Sussurros:** ponte a leste, bambuzais, Lin, três lobos e três aranhas.
+- **Ruínas Celestes:** ponte a oeste, Mei, cristais, três sentinelas astrais, dois golems e o Colosso de cristal.
+- Quatro missões com aceite, acompanhamento, entrega e recompensa única de experiência.
+- Memórias de cristal coletáveis após aceitar a missão de Mei. A entrega libera a missão do Colosso.
+- Feitos anteriores contam para as missões de combate. Inimigos purificados continuam mortos ao recarregar.
+- Avisos vermelhos antecedem os ataques inimigos; saia da área para esquivar.
+- Efeitos de habilidades com círculos, arcos, partículas, rastros e colunas de luz.
+- Minimap das três regiões, corrida e retorno ao santuário pelo diário.
+- As três vagas anteriores são preservadas; missões, coletas e novos inimigos passam a ser salvos por personagem.
+
+![Floresta dos Sussurros](floresta-bambu.png)
+![Ruínas Celestes](ruinas-cristal.png)
+![Conversas e missões](conversa-missoes.png)
+
 ## Limites atuais
 
 Protótipo para computador com teclado e mouse. Ainda não inclui multiplayer,
-inventário ou missões adicionais. Cliques no chão não calculam rotas ao redor de
+inventário ou equipamentos. Cliques no chão não calculam rotas ao redor de
 obstáculos; use WASD para contorná-los. A conclusão da missão também fica salva.
 
 ## Estrutura
@@ -74,9 +94,11 @@ obstáculos; use WASD para contorná-los. A conclusão da missão também fica s
 Arte procedural original; nenhum arquivo, personagem ou código de Zu Online foi
 utilizado. A inspiração é a fantasia oriental dos MMORPGs clássicos.
 
-## Verificação da versão 0.3
+## Verificação da versão 0.4
 
 Testados em Chrome: criação e alternância de três personagens, recarga com progresso
 preservado, exclusão isolada, exportação e restauração, rejeição de backup inválido,
 migração da versão anterior, vida e manutenção do alvo, layout em 720p e conclusão
 da missão com as três classes, incluindo sua retomada após recarregar.
+
+Na expansão, também foram verificados: travessia das duas pontes, aceite de missões, coleta das três memórias, entrega de recompensa, liberação da missão seguinte, persistência das coletas e retorno ao santuário.

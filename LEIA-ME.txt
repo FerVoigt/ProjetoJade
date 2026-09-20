@@ -1,4 +1,4 @@
-VALE DE JADE — O DESPERTAR | TESTE 0.3
+VALE DE JADE — O DESPERTAR | TESTE 0.4
 
 Abra index.html no Chrome ou Edge. Extraia o ZIP antes de jogar.
 
@@ -23,6 +23,7 @@ Clique em inimigo: selecionar, aproximar e atacar.
 TAB: trocar alvo. A seleção continua visível enquanto você anda.
 1 / Espaço: ataque. 2: habilidade em área. 3: cura / proteção.
 V: alternar câmera. Roda: zoom. Botão direito + arrastar: girar.
+Shift: correr. E: conversar / coletar. J: diário de missões.
 H / Esc: pausa. Botão Som: efeitos sonoros opcionais.
 
 CLASSES
@@ -33,7 +34,15 @@ Guardião solar: lança, impacto de fogo e escudo temporário.
 Purifique cinco espíritos e enfrente o chefe. A missão concluída fica salva.
 Experiência: 35 por espírito e 100 pelo chefe. O excedente é preservado.
 
-Ainda é um protótipo solo. Sem multiplayer, inventário ou novas missões.
+Ainda é um protótipo solo. Sem multiplayer ou inventário.
 Cliques não calculam rotas: use WASD para contornar obstáculos.
+
+EXPANSÃO
+Converse com Mestre Yun no santuário. Atravesse a ponte a leste para
+encontrar Lin na floresta de bambu, ou a oeste para encontrar Mei nas ruínas.
+Aceite missões com E, acompanhe com J e volte ao NPC para entregar.
+Há lobos, aranhas, sentinelas, golems e o Colosso de cristal.
+Saia dos círculos vermelhos para evitar ataques.
+As novas missões e coletas são salvas individualmente por personagem.
 
 Mais informações em README.md. Three.js e licença MIT em vendor/.
