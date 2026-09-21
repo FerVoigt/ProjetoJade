@@ -1,9 +1,20 @@
-VALE DE JADE — ALÉM DAS NUVENS | TESTE 0.6
+VALE DE JADE — ALÉM DAS NUVENS | TESTE 0.7
 
 Extraia o ZIP inteiro e abra index.html no Chrome ou Edge.
 Não é necessário instalar nada ou conectar à internet.
 
-NOVIDADES 0.6
+NOVIDADES 0.7 — ECONOMIA
+Converse com Tao usando E e abra Mercado e trocas.
+Ren, Noor, Hana e Sora também têm mercados regionais.
+Compre e venda quantidades de itens; equipamentos em uso ficam protegidos.
+Leve chá do Santuário à Geada, seda de Âmbar ao Eclipse e minério de volta.
+Entregue encomendas de essências por moedas e reputação (até 10% de desconto).
+Troque itens e moedas entre seus personagens: escolha a vaga, revise e confirme.
+Estoque e encomendas são compartilhados e renovam a cada 30 minutos.
+O extrato guarda as últimas 30 negociações. A economia entra no backup.
+Trade local entre suas vagas; esta versão não tem multiplayer.
+
+NOVIDADES ANTERIORES
 Converse com Aya no santuário para iniciar a campanha Além das nuvens.
 Cinco missões novas, sete NPCs novos e doze baús para encontrar.
 Tao vende elixires e compra equipamentos. Bo reforça sua arma com essências.

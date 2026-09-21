@@ -3,6 +3,7 @@
 const KEY='valeDeJade.characters.v3',BACKUP=KEY+'.backup',LEGACY='valeDeJade.profile.v2';
 const Systems=typeof module!=='undefined'?require('./systems.js'):root.JadeSystems;
 const Campaign=typeof module!=='undefined'?require('./campaign.js'):root.JadeCampaign;
+const Economy=typeof module!=='undefined'?require('./economy.js'):root.JadeEconomy;
 const classes=['sword','mage','guardian','summoner'];
 const number=(v,min,max,fallback)=>typeof v==='number'&&Number.isFinite(v)?Math.min(max,Math.max(min,v)):fallback;
 function cleanSlot(v){
@@ -13,9 +14,9 @@ function cleanSlot(v){
  const enemies=Array.isArray(s.enemies)?s.enemies.filter(e=>e&&Number.isInteger(e.id)&&e.id>=0&&e.id<=399).map(e=>({id:e.id,alive:e.alive!==false,hp:number(e.hp,0,e.id===5?280:e.id<5?64:4000,e.id===5?280:e.id<5?64:4000),x:number(e.x,-500,500,0),z:number(e.z,-500,500,0),respawn:number(e.respawn,0,180,0),cycle:Math.floor(number(e.cycle,0,1000000,0))})):null;
  return {id:typeof v.id==='string'?v.id:'character-'+Date.now(),name,classId:v.classId,createdAt:number(v.createdAt,0,1e15,Date.now()),updatedAt:number(v.updatedAt,0,1e15,Date.now()),state:{journey:Campaign.clean(s.journey,enemies||[]),inventory:Systems.cleanInventory(s.inventory,v.classId,level),worldSeed:Math.floor(number(s.worldSeed,1,4294967295,Systems.hash(v.id||name))),discovered:Array.isArray(s.discovered)?[...new Set(s.discovered.filter(n=>Number.isInteger(n)&&n>=0&&n<12))]:[],summons:Array.isArray(s.summons)&&v.classId==='summoner'?s.summons.filter((n,i,a)=>n&&['hound','shade','brute'].includes(n.kind)&&a.findIndex(x=>x?.kind===n.kind)===i).slice(0,3).map(n=>({kind:n.kind,hp:number(n.hp,1,2000,100),life:number(n.life,.1,60,30)})):[],quests:Object.fromEntries(['yun','lin','mei','heart',...Object.keys(Campaign.quests)].map(k=>[k,['active','done'].includes(s.quests?.[k])?s.quests[k]:'new'])),crystals:Array.isArray(s.crystals)?[...new Set(s.crystals.filter(n=>Number.isInteger(n)&&n>=0&&n<3))]:[],level,xp:Math.floor(number(s.xp,0,100+(level-1)*50-1,0)),hp:number(s.hp,1,100,100),mp:number(s.mp,0,100,100),position:{x:number(s.position?.x,-500,500,0),z:number(s.position?.z,-500,500,8)},rotation:number(s.rotation,-1000,1000,Math.PI),cooldowns:[0,1,2].map(i=>number(s.cooldowns?.[i],0,15,0)),shieldTime:number(s.shieldTime,0,5,0),enemies,camDistance:number(s.camDistance,4,44,30),camYaw:number(s.camYaw,-1e8,1e8,.48),camPitch:number(s.camPitch,.06,1.25,.6)}};
 }
-function parse(raw){const v=JSON.parse(raw);if(!v||v.version!==3||!Array.isArray(v.slots)||v.slots.length!==3)throw Error('Invalid character collection');const slots=v.slots.map(x=>x===null?null:cleanSlot(x));if(v.slots.some((s,i)=>s!==null&&!slots[i]))throw Error('Invalid character');return {version:3,slots};}
+function parse(raw){const v=JSON.parse(raw);if(!v||v.version!==3||!Array.isArray(v.slots)||v.slots.length!==3)throw Error('Invalid character collection');const slots=v.slots.map(x=>x===null?null:cleanSlot(x));if(v.slots.some((s,i)=>s!==null&&!slots[i]))throw Error('Invalid character');return {version:3,slots,economy:Economy.clean(v.economy)};}
 class CharacterStore{
- constructor(storage){this.storage=storage;this.data={version:3,slots:[null,null,null]};this.warning='';this.blocked=false;this.load();}
+ constructor(storage){this.storage=storage;this.data={version:3,slots:[null,null,null],economy:Economy.clean(null)};this.warning='';this.blocked=false;this.load();}
  load(){let raw;try{raw=this.storage.getItem(KEY);}catch(e){this.warning='O navegador bloqueou o armazenamento. Use Baixar backup antes de sair.';return;}
  if(raw){try{this.data=parse(raw);return;}catch(e){try{const backup=this.storage.getItem(BACKUP);if(backup){this.data=parse(backup);this.storage.setItem(KEY+'.damaged',raw);this.warning='Personagens recuperados da cópia de segurança local.';return;}}catch(e){}this.blocked=true;this.warning='Não foi possível ler os personagens salvos. Os dados foram preservados; novos salvamentos estão bloqueados.';return;}}
  try{const old=JSON.parse(this.storage.getItem(LEGACY)||'null');if(old){const migrated=cleanSlot(old);if(migrated){this.data.slots[0]=migrated;this.warning='Seu personagem da versão anterior foi trazido para a primeira vaga.';this.persist();}}}catch(e){}
@@ -23,6 +24,7 @@ class CharacterStore{
  persist(){if(this.blocked)return false;try{const raw=JSON.stringify(this.data);const previous=this.storage.getItem(KEY);if(previous){try{parse(previous);this.storage.setItem(BACKUP,previous);}catch(e){}}this.storage.setItem(KEY,raw);return true;}catch(e){this.warning='Não foi possível salvar no navegador. Use Baixar backup antes de sair.';return false;}}
  set(index,slot){if(!Number.isInteger(index)||index<0||index>2)throw Error('Invalid slot');const clean=cleanSlot(slot);if(!clean)throw Error('Invalid character');this.data.slots[index]=clean;return this.persist();}
  remove(index){if(!Number.isInteger(index)||index<0||index>2)throw Error('Invalid slot');this.data.slots[index]=null;return this.persist();}
+ commit(candidate){const previous=this.data;this.data=parse(JSON.stringify(candidate));if(this.persist())return true;this.data=previous;return false;}
  export(){return JSON.stringify(this.data,null,2);}
 }
 root.JadeStorage={CharacterStore,cleanSlot,parse,KEY,BACKUP};if(typeof module!=='undefined')module.exports=root.JadeStorage;

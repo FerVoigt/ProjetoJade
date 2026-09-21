@@ -1,13 +1,43 @@
 # Vale de Jade — Além das nuvens
 
 Protótipo 3D solo de fantasia oriental, desenvolvido em JavaScript e Three.js.
-**Versão 0.6:** campanha na fronteira, mercador, forja, baús e combate mais fluido.
+**Versão 0.7:** economia regional, caravanas, encomendas e trocas entre personagens.
 
 ## Jogar
 
 Abra `index.html` no Chrome ou Edge. Extraia o ZIP inteiro antes de abrir.
 Não exige instalação, servidor ou conexão com a internet. Use teclado e mouse.
 Se já estiver jogando, atualize a página para carregar a nova versão.
+
+## Economia e comércio
+
+Converse com **Tao** no santuário usando **E** e escolha **Abrir mercado e trocas**.
+Ren, Noor, Hana e Sora também oferecem mercados nos quatro acampamentos da fronteira.
+O mundo pausa durante a negociação.
+
+- **Comprar / Vender:** quantidades, preços totais antes da compra, equipamentos regionais,
+  materiais e elixires. Raridade e nível afetam o valor; uma unidade equipada fica protegida.
+- **Rotas comerciais:** compre chá de jade no Santuário e venda na Geada; seda de âmbar
+  em Âmbar para o Eclipse; minério lunar do Eclipse para o Santuário. Sem desconto,
+  cada unidade custa 18 na origem e rende 30 no destino.
+- **Encomendas:** entregue essências das trevas por moedas e reputação. A reputação
+  compartilhada concede até 10% de desconto. Uma entrega por mercado a cada renovação.
+- **Trocar personagens:** escolha outra vaga criada, ofereça e receba um tipo de item
+  e moedas de cada lado, revise e confirme. Também permite presentes, sem taxa.
+  A negociação salva as duas vagas juntas; se o salvamento falhar, ela é cancelada.
+- **Extrato:** as últimas 30 negociações ficam salvas na coleção.
+
+Estoque e encomendas são compartilhados entre as três vagas e renovados em intervalos
+fixos de 30 minutos pelo relógio do dispositivo. Trocar de personagem ou recarregar
+não repõe estoque dentro do mesmo intervalo. Vendas não reabastecem a loja.
+As operações validam saldo, quantidade, limite de 60 espaços e 999 unidades por pilha.
+
+Este é um jogo **solo e local**: as trocas são com NPCs ou entre os seus personagens
+salvos neste navegador. Não há servidor, mercado online ou trade com outros jogadores.
+Os backups da coleção incluem a economia; saves anteriores são preservados.
+
+![Mercado das caravanas](mercado-caravanas.png)
+![Troca entre personagens](troca-personagens.png)
 
 ## Inventário
 
@@ -25,7 +55,7 @@ Pressione **I** ou clique em Inventário. O mundo fica pausado durante a organiz
 - Descartar exige confirmação. Um item equipado precisa ser desequipado primeiro.
 
 Personagens antigos recebem equipamento básico e elixires uma única vez, sem perder o progresso.
-Tao vende elixires e compra equipamentos que não estão equipados. Bo usa moedas e essências para reforçar sua arma equipada, respeitando seu nível.
+Tao e os comerciantes dos acampamentos negociam elixires, materiais e equipamentos. Bo usa moedas e essências para reforçar sua arma equipada, respeitando seu nível.
 
 ![Inventário com filtros e equipamentos](inventario.png)
 
@@ -96,7 +126,7 @@ Sete novos habitantes se juntam aos três anteriores. A campanha acrescenta cinc
 | Noor, guardiã | Acampamento central da segunda faixa. Pede a ativação de três faróis, um em cada ilha dessa faixa. |
 | Hana, mestra | Acampamento central da terceira faixa. Organiza a prova dos cinco ecos. |
 | Sora, vigia | Acampamento central da última faixa. Pede a derrota de um dos três colossos da fronteira; recompensa com arma épica. |
-| Tao, mercador | Santuário. Compra equipamento não equipado e vende elixires por 25 moedas. |
+| Tao, mercador | Santuário. Mercado de equipamentos, elixires e mercadorias; encomendas e trocas entre vagas. |
 | Bo, mestre da forja | Santuário. Reforça a arma equipada usando moedas e essências, com custo e melhoria mostrados antes da ação. |
 
 Aceite e entregue cada missão ao respectivo NPC com E. As missões seguintes são liberadas pela entrega da anterior. Vitórias anteriores na fronteira também contam. Recompensas de missão só são concedidas uma vez; baús, faróis e contadores são salvos. A entrega de equipamento exige espaço na mochila.
@@ -148,7 +178,7 @@ automaticamente a cada três segundos e nas mudanças importantes.
 
 O menu de pausa oferece Salvar agora e Salvar e trocar personagem. Baixar backup
 exporta as três vagas; Restaurar backup valida o arquivo e pede confirmação antes de
-substituí-las. A migração preserva os personagens das versões 0.2 a 0.5.
+substituí-las. A migração preserva os personagens das versões 0.2 a 0.6.
 
 O armazenamento é local ao navegador, sem conta online ou sincronização em nuvem.
 Trocar de navegador, endereço ou computador, limpar os dados ou usar modo privado
@@ -180,3 +210,9 @@ A versão 0.6 também foi verificada com aceites e entregas da campanha, três f
 
 Ainda é um protótipo solo, sem multiplayer ou fabricação de itens do zero. Arte procedural
 original; nenhum arquivo, personagem ou código de Zu Online foi utilizado.
+
+## Verificação das regras
+
+Com Node.js: `node systems.test.cjs`, `node campaign.test.cjs` e `node economy.test.cjs`.
+Os testes da economia cobrem limites, conservação de recursos, estoque compartilhado,
+recompensas únicas por renovação e cancelamento quando o armazenamento falha.
