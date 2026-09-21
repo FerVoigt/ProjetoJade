@@ -1,9 +1,18 @@
-VALE DE JADE — ALÉM DAS NUVENS | TESTE 0.7
+VALE DE JADE — ALÉM DAS NUVENS | TESTE 0.8
 
 Extraia o ZIP inteiro e abra index.html no Chrome ou Edge.
 Não é necessário instalar nada ou conectar à internet.
 
-NOVIDADES 0.7 — ECONOMIA
+NOVIDADES 0.8 — DIA E NOITE
+Ciclo de 12 minutos de jogo ativo, salvo separadamente em cada personagem.
+O relógio abaixo do minimapa informa o horário e a fase do dia.
+Menus, inventário, mapa e conversas pausam o tempo.
+À noite: percepção dos inimigos +50%, movimento +20%, recarga de ataque mais rápida.
+Tochas nos caminhos, pontes e acampamentos iluminam o cenário ao anoitecer.
+Amanhecer e anoitecer têm transições suaves, com lua e estrelas à noite.
+Tochas iluminam; não afastam os inimigos.
+
+ECONOMIA
 Converse com Tao usando E e abra Mercado e trocas.
 Ren, Noor, Hana e Sora também têm mercados regionais.
 Compre e venda quantidades de itens; equipamentos em uso ficam protegidos.

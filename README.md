@@ -1,13 +1,36 @@
 # Vale de Jade — Além das nuvens
 
 Protótipo 3D solo de fantasia oriental, desenvolvido em JavaScript e Three.js.
-**Versão 0.7:** economia regional, caravanas, encomendas e trocas entre personagens.
+**Versão 0.8:** ciclo de dia e noite, tochas e agressividade noturna.
 
 ## Jogar
 
 Abra `index.html` no Chrome ou Edge. Extraia o ZIP inteiro antes de abrir.
 Não exige instalação, servidor ou conexão com a internet. Use teclado e mouse.
 Se já estiver jogando, atualize a página para carregar a nova versão.
+
+## Dia, noite e tochas
+
+Um dia completo dura **12 minutos de jogo ativo**. Personagens novos ou antigos sem
+horário registrado começam às 08:00. Cada vaga salva seu próprio horário, inclusive
+nos backups. Menus, inventário, mapa e conversas pausam o relógio.
+
+- Amanhecer: 05:00–07:00; dia: 07:00–17:00; anoitecer: 17:00–19:00;
+  noite: 19:00–05:00. A luz e a agressividade mudam suavemente nas transições.
+- Na noite plena, inimigos percebem alvos **50% mais longe**, movem-se **20% mais
+  rápido** e recuperam o ataque **30% mais rápido**. O aviso de golpe permanece
+  com 0,7 segundo para permitir esquiva. Os bônus também se aplicam aos chefes.
+- O relógio abaixo do minimapa informa a fase. Avisos anunciam a chegada da noite
+  e do amanhecer; o alvo mostra Fúria noturna durante o período escuro.
+- Tochas em caminhos, pontes e acampamentos acendem gradualmente ao anoitecer,
+  com chama animada e luz quente sobre o cenário. Iluminam, mas não afastam inimigos.
+- Céu, neblina, luz ambiente, estrelas e lua acompanham o ciclo. A luz lunar
+  mantém o terreno visível fora das tochas.
+- São usadas até seis luzes de tocha próximas, sem sombras adicionais, para limitar
+  o custo gráfico. A posição das tochas respeita as áreas transitáveis do mapa.
+
+![Dia no santuário](ciclo-dia.png)
+![Noite com tochas](ciclo-noite.png)
 
 ## Economia e comércio
 
@@ -178,7 +201,7 @@ automaticamente a cada três segundos e nas mudanças importantes.
 
 O menu de pausa oferece Salvar agora e Salvar e trocar personagem. Baixar backup
 exporta as três vagas; Restaurar backup valida o arquivo e pede confirmação antes de
-substituí-las. A migração preserva os personagens das versões 0.2 a 0.6.
+substituí-las. A migração preserva os personagens das versões 0.2 a 0.7.
 
 O armazenamento é local ao navegador, sem conta online ou sincronização em nuvem.
 Trocar de navegador, endereço ou computador, limpar os dados ou usar modo privado
@@ -216,3 +239,6 @@ original; nenhum arquivo, personagem ou código de Zu Online foi utilizado.
 Com Node.js: `node systems.test.cjs`, `node campaign.test.cjs` e `node economy.test.cjs`.
 Os testes da economia cobrem limites, conservação de recursos, estoque compartilhado,
 recompensas únicas por renovação e cancelamento quando o armazenamento falha.
+
+Dia/noite: `node daylight.test.cjs` verifica as transições contínuas, a virada do dia,
+a pausa, os modificadores de agressividade e a compatibilidade dos horários salvos.
